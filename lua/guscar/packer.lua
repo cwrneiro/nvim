@@ -59,6 +59,8 @@ return require('packer').startup(function(use)
 
 	use('Pocco81/auto-save.nvim')
 
+	use('voldikss/vim-floaterm')
+
 	--
 	-- use('luk400/vim-jukit')
 
