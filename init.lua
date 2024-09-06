@@ -1,5 +1,6 @@
+-- this is here so it can happen before the editor colorscheme
+vim.g.lightline = {
+    colorscheme = 'rosepine'
+}
+
 require("guscar")
-
-
-vim.o.number = true
-vim.o.relativenumber = true

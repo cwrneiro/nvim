@@ -61,6 +61,12 @@ return require('packer').startup(function(use)
 
 	use('voldikss/vim-floaterm')
 
+	use('itchyny/lightline.vim')
+
+	use('jidn/vim-dbml')
+
+	use('numToStr/Comment.nvim')
+
 	--
 	-- use('luk400/vim-jukit')
 
