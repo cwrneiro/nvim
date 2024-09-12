@@ -45,14 +45,10 @@ return require('packer').startup(function(use)
 		{'rafamadriz/friendly-snippets'}
 	})
 
-	use({
-		'stevearc/oil.nvim',
-		config = function()
-			require('oil').setup()
-		end,
-	})
+	use({'stevearc/oil.nvim' })
 
-	
+	use({'echasnovski/mini.icons'})
+
 	use('lervag/vimtex')
 
 	use('Pocco81/true-zen.nvim')
