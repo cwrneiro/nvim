@@ -20,7 +20,7 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'tsserver', 'rust_analyzer', 'pyright'},
+  ensure_installed = {'rust_analyzer', 'pyright'},
   handlers = {
     function(server_name)
       require('lspconfig')[server_name].setup({
@@ -50,7 +50,7 @@ require('mason-lspconfig').setup({
   }
 })
 
-require 'lspconfig'.pyright.setup {}
+require('lspconfig').pyright.setup({})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
