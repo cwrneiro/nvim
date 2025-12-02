@@ -14,3 +14,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+-- Abrir imagem e pdf pelo nvim
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = {"*.png", "*.jpg", "*.jpeg", "*.pdf"},
+  callback = function()
+    local file = vim.fn.expand("<afile>")
+    vim.system({"xdg-open", file})
+    vim.cmd('Oil')
+    print('Opening external: ', file)
+  end,
+})
+
