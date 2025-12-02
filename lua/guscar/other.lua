@@ -2,6 +2,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 vim.opt.showmode = false
+vim.opt.winborder = 'rounded'
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "python",
