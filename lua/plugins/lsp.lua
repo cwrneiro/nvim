@@ -8,37 +8,8 @@ return {
     dependencies = { "mason.nvim" },
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = {'rust_analyzer', 'pyright'},
-        handlers = {
-          function(server_name)
-            require('lspconfig')[server_name].setup({
-              capabilities = require('cmp_nvim_lsp').default_capabilities(),
-            })
-          end,
-          lua_ls = function()
-            require('lspconfig').lua_ls.setup({
-              capabilities = require('cmp_nvim_lsp').default_capabilities(),
-              settings = {
-                Lua = {
-                  runtime = {
-                    version = 'LuaJIT'
-                  },
-                  diagnostics = {
-                    globals = {'vim'},
-                  },
-                  workspace = {
-                    library = {
-                      vim.env.VIMRUNTIME,
-                    }
-                  }
-                }
-              }
-            })
-          end,
-        }
+        ensure_installed = { 'rust_analyzer', 'pyright', 'lua_ls', 'harper_ls' },
       })
-
-      require('lspconfig').harper_ls.setup {}
     end,
   },
   {
@@ -46,10 +17,30 @@ return {
     dependencies = { "mason-lspconfig.nvim" },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
+      -- Global capabilities for all servers
+      vim.lsp.config('*', {
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      })
+
+      -- Server-specific overrides
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = { 'vim' } },
+            workspace = { library = { vim.env.VIMRUNTIME } },
+          },
+        },
+      })
+
+      -- Enable all servers
+      vim.lsp.enable({ 'rust_analyzer', 'pyright', 'lua_ls', 'harper_ls' })
+
+      -- Keybindings on attach
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('user_lsp_attach', {clear = true}),
+        group = vim.api.nvim_create_augroup('user_lsp_attach', { clear = true }),
         callback = function(event)
-          local opts = {buffer = event.buf}
+          local opts = { buffer = event.buf }
 
           vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
           vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
