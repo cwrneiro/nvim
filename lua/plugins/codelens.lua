@@ -12,8 +12,8 @@ return {
 						git_authors = true,
 					},
 
-			 }
-		 )
-	 end
- }
+				}
+			)
+		end
+	}
 }
