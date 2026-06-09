@@ -15,8 +15,10 @@ My personal Neovim configuration, suited for my needs.
   - Additional config: `lua_ls`, `harper_ls`
 - **Completion**: nvim-cmp with LSP, buffer, path, and snippet sources
 - **Snippets**: LuaSnip with friendly-snippets
-- **Syntax**: Treesitter with auto-install and playground
-  - Parsers: python, rust, c, lua, vim, vimdoc, query, hyprlang
+- **Syntax**: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (`main` branch; requires Neovim 0.12+ and the [`tree-sitter` CLI](https://github.com/tree-sitter/tree-sitter) ≥ 0.26.1 on `PATH` to build parsers)
+  - Parsers: python, rust, c, lua, vim, vimdoc, query, hyprlang, bash, markdown, markdown_inline
+  - Highlighting via `vim.treesitter.start()` on `FileType`; add new languages to the `install{}` list or run `:TSInstall <lang>`
+  - Use Neovim's built-in `:InspectTree` / `:EditQuery` to explore syntax trees
 - **Auto Pairs**: nvim-autopairs with treesitter integration
 - **CodeLens**: [lensline.nvim](https://github.com/oribarilan/lensline.nvim) showing references, implementations, and git authors
 - **LaTeX**: VimTeX support (viewer: zathura)

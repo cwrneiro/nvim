@@ -1,27 +1,29 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false, -- main branch does not support lazy-loading
     build = ":TSUpdate",
-    event = { "BufReadPre", "BufNewFile" },
     config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'python', 'rust', 'c', 'lua', 'vim', 'vimdoc', 'query', 'hyprlang' },
-        sync_install = false,
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-      }
+      require("nvim-treesitter").setup()
+
+      -- no auto_install on main: list parsers explicitly (bash added)
+      require("nvim-treesitter").install({
+        "python", "rust", "c", "lua", "vim", "vimdoc",
+        "query", "hyprlang", "bash", "markdown", "markdown_inline",
+      })
+
+      -- main has no highlight.enable: start treesitter for any
+      -- filetype that has a parser available
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          pcall(vim.treesitter.start, args.buf)
+        end,
+      })
 
       vim.filetype.add({
         pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
       })
     end,
-  },
-  {
-    "nvim-treesitter/playground",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    cmd = "TSPlaygroundToggle",
   },
 }
