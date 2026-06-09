@@ -18,7 +18,7 @@ My personal Neovim configuration, suited for my needs.
 - **Syntax**: Treesitter with auto-install and playground
   - Parsers: python, rust, c, lua, vim, vimdoc, query, hyprlang
 - **Auto Pairs**: nvim-autopairs with treesitter integration
-- **CodeLens**: lsp-lens.nvim showing references, implementations, and git authors
+- **CodeLens**: [lensline.nvim](https://github.com/oribarilan/lensline.nvim) showing references, implementations, and git authors
 - **LaTeX**: VimTeX support (viewer: zathura)
 - **DBML**: Database markup language support
 
