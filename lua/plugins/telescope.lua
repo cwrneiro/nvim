@@ -1,6 +1,39 @@
+-- Telescope's bundled treesitter previewer relies on the old `master`-branch
+-- nvim-treesitter API (ft_to_lang, get_parser, configs.is_enabled). Since we
+-- migrated nvim-treesitter to the `main` branch, that path errors out. We
+-- disable telescope's highlighter and attach Neovim's native treesitter
+-- highlighter to preview buffers instead.
+local native_ts_maker = function(filepath, bufnr, opts)
+  opts = opts or {}
+  local orig_callback = opts.callback
+  require("telescope.previewers.buffer_previewer").file_maker(filepath, bufnr, vim.tbl_extend("force", opts, {
+    callback = function(buf)
+      if orig_callback then
+        orig_callback(buf)
+      end
+      local ft = vim.filetype.match { buf = buf, filename = filepath }
+      if not ft or ft == "" then
+        return
+      end
+      local lang = vim.treesitter.language.get_lang(ft) or ft
+      if pcall(vim.treesitter.start, buf, lang) then
+        -- file_maker's regex highlighter sets `syntax` right after this
+        -- callback; drop it next tick so only treesitter is active.
+        vim.schedule(function()
+          if vim.api.nvim_buf_is_valid(buf) then
+            vim.bo[buf].syntax = "off"
+          end
+        end)
+      end
+    end,
+  }))
+end
+
 require("telescope").setup {
   defaults = {
+    buffer_previewer_maker = native_ts_maker,
     preview = {
+      treesitter = false,
       mime_hook = function(filepath, bufnr, opts)
         local is_image = function(filepath)
           local image_extensions = {'png','jpg'}   -- Supported image formats
