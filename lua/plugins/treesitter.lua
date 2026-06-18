@@ -11,6 +11,7 @@ return {
       require("nvim-treesitter").install({
         "python", "rust", "c", "lua", "vim", "vimdoc",
         "query", "hyprlang", "bash", "markdown", "markdown_inline",
+        "typescript", "tsx", "javascript", "json",
       })
 
       -- main has no highlight.enable: start treesitter for any
