@@ -23,6 +23,7 @@ My personal Neovim configuration, suited for my needs.
 - **CodeLens**: [lensline.nvim](https://github.com/oribarilan/lensline.nvim) showing references, implementations, and git authors
 - **LaTeX**: VimTeX support (viewer: zathura)
 - **DBML**: Database markup language support
+- **Markdown**: [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) in-buffer rendering (headings, bullets, code blocks); needs a Nerd Font for icons
 
 ### LSP Keybindings
 | Keybinding | Action |
@@ -93,6 +94,7 @@ Replaces netrw.
 | `<leader>n` | Toggle auto-save | AutoSave |
 | `<F7>` | Toggle terminal | FloatTerm |
 | `<leader>gg` | New zsh terminal | FloatTerm |
+| `<leader>md` | Toggle markdown render | RenderMarkdown |
 
 ### Special Behaviors
 - Binary files (images, PDFs) auto-open in system viewer
