@@ -8,7 +8,7 @@ return {
     dependencies = { "mason.nvim" },
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'rust_analyzer', 'pyright', 'lua_ls', 'harper_ls' },
+        ensure_installed = { 'rust_analyzer', 'pyright', 'lua_ls' }, -- 'harper_ls' 
       })
     end,
   },
@@ -34,7 +34,7 @@ return {
       })
 
       -- Enable all servers
-      vim.lsp.enable({ 'rust_analyzer', 'pyright', 'lua_ls', 'harper_ls' })
+      vim.lsp.enable({ 'rust_analyzer', 'pyright', 'lua_ls' }) -- 'harper_ls' 
 
       -- Keybindings on attach
       vim.api.nvim_create_autocmd('LspAttach', {

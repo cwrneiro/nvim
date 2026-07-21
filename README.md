@@ -12,7 +12,7 @@ My personal Neovim configuration, suited for my needs.
 ### Language Support
 - **LSP**: Mason + nvim-lspconfig for language server management
   - Auto-installed servers: `rust_analyzer`, `pyright`
-  - Additional config: `lua_ls`, `harper_ls`
+  - Additional config: `lua_ls`
 - **Completion**: nvim-cmp with LSP, buffer, path, and snippet sources
 - **Snippets**: LuaSnip with friendly-snippets
 - **Syntax**: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (`main` branch; requires Neovim 0.12+ and the [`tree-sitter` CLI](https://github.com/tree-sitter/tree-sitter) ≥ 0.26.1 on `PATH` to build parsers)
