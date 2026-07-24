@@ -7,16 +7,16 @@ My personal Neovim configuration, suited for my needs.
 ### Core
 - **Plugin Manager**: [lazy.nvim](https://github.com/folke/lazy.nvim)
 - **Colorscheme**: [Monokai NighTasty](https://github.com/polirritmico/monokai-nightasty.nvim)
-- **Leader**: `<Space>`
+- **Leader**: `<Space>` (localleader: `\`)
 
 ### Language Support
 - **LSP**: Mason + nvim-lspconfig for language server management
-  - Auto-installed servers: `rust_analyzer`, `pyright`
-  - Additional config: `lua_ls`
+  - Auto-installed servers (via mason-lspconfig): `rust_analyzer`, `pyright`, `lua_ls`
+  - `lua_ls` has extra settings (LuaJIT runtime, `vim` global, runtime library)
 - **Completion**: nvim-cmp with LSP, buffer, path, and snippet sources
 - **Snippets**: LuaSnip with friendly-snippets
 - **Syntax**: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (`main` branch; requires Neovim 0.12+ and the [`tree-sitter` CLI](https://github.com/tree-sitter/tree-sitter) ≥ 0.26.1 on `PATH` to build parsers)
-  - Parsers: python, rust, c, lua, vim, vimdoc, query, hyprlang, bash, markdown, markdown_inline
+  - Parsers: python, rust, c, lua, vim, vimdoc, query, hyprlang, bash, markdown, markdown_inline, typescript, tsx, javascript, json, sql, yaml
   - Highlighting via `vim.treesitter.start()` on `FileType`; add new languages to the `install{}` list or run `:TSInstall <lang>`
   - Use Neovim's built-in `:InspectTree` / `:EditQuery` to explore syntax trees
 - **Auto Pairs**: nvim-autopairs with treesitter integration
@@ -83,6 +83,7 @@ Replaces netrw.
 ### Utilities
 - **Comment**: Smart commenting support
 - **Lightline**: Minimal statusline
+- **Colorizer**: Highlights color codes inline (nvim-colorizer.lua)
 
 | Keybinding | Action | Plugin |
 |---|---|---|
@@ -98,5 +99,5 @@ Replaces netrw.
 
 ### Special Behaviors
 - Binary files (images, PDFs) auto-open in system viewer
-- Python files use 4-space tabs
+- Python files indent with hard tabs displayed at width 4
 - Hyprlang filetype detection for Hyprland configs
