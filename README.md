@@ -21,8 +21,6 @@ My personal Neovim configuration, suited for my needs.
   - Use Neovim's built-in `:InspectTree` / `:EditQuery` to explore syntax trees
 - **Auto Pairs**: nvim-autopairs with treesitter integration
 - **CodeLens**: [lensline.nvim](https://github.com/oribarilan/lensline.nvim) showing references, implementations, and git authors
-- **LaTeX**: VimTeX support (viewer: zathura)
-- **DBML**: Database markup language support
 - **Markdown**: [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) in-buffer rendering (headings, bullets, code blocks); needs a Nerd Font for icons
 
 ### LSP Keybindings
@@ -88,13 +86,7 @@ Replaces netrw.
 | Keybinding | Action | Plugin |
 |---|---|---|
 | `<leader>u` | Toggle undo history | UndoTree |
-| `<leader>zn` | Narrow focus | TrueZen |
-| `<leader>zf` | Focus mode | TrueZen |
-| `<leader>zm` | Minimalist mode | TrueZen |
-| `<leader>za` | Ataraxis mode | TrueZen |
 | `<leader>n` | Toggle auto-save | AutoSave |
-| `<F7>` | Toggle terminal | FloatTerm |
-| `<leader>gg` | New zsh terminal | FloatTerm |
 | `<leader>md` | Toggle markdown render | RenderMarkdown |
 
 ### Special Behaviors
